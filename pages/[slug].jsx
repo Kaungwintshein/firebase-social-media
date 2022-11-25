@@ -6,7 +6,6 @@ import Message from "../components/Message";
 import {
   arrayUnion,
   doc,
-  getDoc,
   onSnapshot,
   Timestamp,
   updateDoc,
@@ -53,6 +52,7 @@ const Details = () => {
     if (!router.isReady) return;
     getComments();
   }, [router.isReady]);
+
   return (
     <div>
       <Message {...routeData}></Message>
@@ -74,7 +74,7 @@ const Details = () => {
         </div>
         <div className="py-6">
           <h2 className="font-bold">Comments</h2>
-          {allMessages.map((message) => (
+          {allMessages?.map((message) => (
             <div className="bg-white p-4 my-4 border-2" key={message.time}>
               <div className="flex items-center gap-2 mb-4">
                 <img
